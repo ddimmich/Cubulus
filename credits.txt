@@ -1,0 +1,21 @@
+OLAP aggregation engine uses "hierarchical range-clustering of keys" by "V. Markl, F.Ramsak, R. Bayer: Improving OLAP Performance by Multidimensional Hierarchical Clustering. Proc. of the Intl. Database Engineering and Applications Symposium, pp. 165-177, 1999", http://mistral.informatik.tu-muenchen.de/results/publications/ideas99.pdf
+
+SQL statements inspired from Kenneth A. Ross, "Conjunctive Selection Conditions in Main Memory", http://www.cs.columbia.edu/~kar/pubsk/selections.pdf
+
+May thanks to the developers of the following Open Source projects:
+-Python (www.python.org)
+-MonetDB (http://monetdb.cwi.nl/), and especially Niels Nes and Martin Kersten
+-mysql (www.mysql.org)
+-MySQLdb (http://mysql-python.sourceforge.net/)
+-memcached (http://www.danga.com/memcached/)
+-python-memcached (http://www.tummy.com/Community/software/python-memcached/)
+-CherryPy (http://www.cherrypy.org/)
+-DBUtils (http://www.python.org/pypi/DBUtils/)
+-threadpool (http://chrisarndt.de/en/software/python/threadpool)
+-pyparsing (http://pyparsing.wikispaces.com/)
+-PostgreSQL (www.postgresql.org)
+-bpgsql (http://barryp.org/software/bpgsql/)
+-SQLite (www.sqlite.org)
+-pysqlite (http://www.initd.org/tracker/pysqlite)
+-dTree (http://www.destroydrop.com/javascripts/tree/)
+

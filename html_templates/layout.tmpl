@@ -1,0 +1,66 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<link href="%(modProxyRoot)s/static/cubulus.css" type="text/css" />
+<title>Cubulus</title>
+<script type="text/javascript">
+	function set_r(x) {
+		layout_form = document.getElementById('layout')
+		cubulus_form = top.frames['data'].document.getElementById('cubulus')
+		layout_form.onrows.value = x;
+		layout_form.hiers.value = cubulus_form.hiers.value;
+		layout_form.filters.value = cubulus_form.filters.value;
+		layout_form.submit();
+	}
+	function set_c(x) {
+		layout_form = document.getElementById('layout')
+		cubulus_form = top.frames['data'].document.getElementById('cubulus')
+		layout_form.oncols.value = x;
+		layout_form.hiers.value = cubulus_form.hiers.value;
+		layout_form.filters.value = cubulus_form.filters.value;
+		layout_form.submit();
+	}
+	function i_frame_show(e_root, x, nr, h, w, s){
+		for(i=0;nr>i;i++) {
+			e = e_root + i;
+			if(i==x){
+				document.getElementById(e).style.display="block";
+			} else {
+				document.getElementById(e).style.display="none";
+			}
+		}
+	}
+	function i_frame_resize(e, h, w, s){
+		hier_frame = top.frames[e]
+		hier_frame.height = h;
+		hier_frame.width = w;
+		hier_frame.src=s;
+	}
+</script>
+	
+</head>
+	
+<body>
+
+<p class="username">User: %(username)s <br /> </p>
+
+<!-- Rows/Cols/ header --> %(rcfheader)s <br />
+
+<!-- iframe with figures + SVG chart + MDX submit+ instructions -->
+<iframe id="data" src="%(iframe)s" style="border:None;" height="%(h)s" width="%(w)s" onmouseover="i_frame_show('hier_',-1,7, '0px','0px','');" />
+	
+<form id="layout" action="index" method="%(method)s">
+<p><!--on rows: --> <input type="%(hidden)s" name="onrows" value="%(onrows)d" /></p>
+<p><!--on cols: --> <input type="%(hidden)s" name="oncols" value="%(oncols)d" /></p>
+<p><!--hiers: --> <input type="%(hidden)s" name="hiers" value="%(hiers)s" /></p>
+<p><!--filters: --> <input type="%(hidden)s" name="filters" value="%(filters)s" /></p>
+<p><input type="hidden" /></p>
+</form>
+<p> Cubulus version %(cubulus_version)s <br /> </p>
+%(powered_by)s
+</body>
+</html>

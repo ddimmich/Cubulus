@@ -1,0 +1,241 @@
+ver 0.07
+-use memcached (thread unsafe)
+-consolidate all SQL in runSQL()
+
+ver 0.08
+-thread-safety: one memcached connection per thread
+-cached / uncached runSQL()
+-iframes: don't generate iframes for cached results
+-hierarchical row/column headers
+
+ver 0.09
+-fix size of iframe with iframe (uncacheable in Safari)
+-DataFrame and DrillForm.navigate check cookies
+
+ver 0.11
+-Model encapsulates all SQL code
+
+ver 0.12
+-filters & RCFHeader ?
+
+ver 0.14
+-class Bubu solution for paralel Iframes
+-fix Decimal() from MySQLdb error
+-separate layout, iframe generation, caching... 
+
+ver 0.15
+-one thereaded server, no iframes
+
+-Safari fetches max 200 iFrames, does nto cache anything !!
+-Camino, FFox slowest. Cash OK
+-IExploer faster than FFox, can cache. Iframes have ugly scrollbars
+
+ver 0.16
+-table cells with ID instead of IFrames
+-generator for cell update script - not working because CherryPy flattens all generators
+
+ver 0.17
+-add thread pool
+-add autopilot (stress)
+
+ver 0.18
+-pipelinedSQL: better performance, integrate with cache
+
+ver 0.19
+-add javascript Trees
+
+ver 0.20
+-add javascript Trees instead of "filter links" in table
+-fixed None in HTML output
+-set filter selections
+
+ver 0.21
+-data and hier menus in separate frames, fixing hier menu selection
+
+ver 0.22
+-digest authentication
+-split MVC
+
+ver 0.23
+-dictionary based % substitution
+
+
+ver 0.26
+-published on SF.net
+
+ver 0.28
+-fetch_users returns only pw of requested user. 
+-Still not OK, since it should match hash(pw) against db ...
+-filtering hierarchies and figures based on authorizations
+
+ver 0.30
+-split in multiple files
+
+ver 0.31
+-do caching on list, not on SQL statements
+-add testing code for Model and View
+-published on SF.net
+
+ver 0.32
+-added POST and GET (cacheable ex with squid)
+-in order to change NRDIMS fix permissions (gen.py) and NRDIMS (constants.py)
+-don't generate WHERE clauses for neutral slicers ("all XXX")
+-improve stress testing with "on rows"/"on cols"
+
+ver 0.33
+-added flat dimensions + cleaned up gen.py
+-added PARTITION BY in database , needs mysql>=5.1
+-bug fix: keep hiers and measures when dicing report
+-added CSS and "zebra lines"
+
+ver 0.34
+-refactor pipelinedSQL, avoid "10 <= dim_1 and dim_1 <= 10"
+-fix pipelinedSQL bugs
+-add more tests for DrillForm, including test for sums (by row and column)
+
+ver 0.35
+-tune partitions to use RANGE and SUBPARTITION
+-fix installation instructions for threadpool (no setup.py)
+-add tests for mysql, memcached and libs
+-tested in Ubuntu 6.06-1 server (QEMU)
+
+ver 0.36
+-generate metadata, refactor gen.py
+-separate sqlutil.py to avoid circular references
+-fix hierarchy menus hiding when "onmouseout"
+-implement selectableRoot in hier menus
+-implement default nodes in hier menus
+-show dimension names in designer
+
+ver 0.37
+-published on Webfaction, more constants for logging, port etc.
+-disabled user authorization (and tests for it)
+-cub.py renamed to site.py
+-added "powered by"
+-options small/medium/huge when generating database
+
+ver 0.38:
+-metadata fixed to read fact and dimension table names (still to fix auth)
+-experimental generator for random star schema, and loader
+-fixed CherryPy 'production' environment (logging to file, no error messages)
+
+ver 0.39
+-possibility to put behind apache mod_proxy
+-reading DB_username from .my.cnf
+-fixed non selectable root display on rows/cols headers
+-fixed number formatting (rounding)
+-show N.A instead of 0.0 for empty cells
+
+ver 0.40
+-display username + detect authorization headers from apache/lighhtpd/squid
+
+ver 0.41
+-fixed star schema generator, improved star schema import
+-support for calculated formulas
+-row total = sum of columns with gen=one level bellow
+-first row = sum of rows with gen=one level bellow
+-fixed non selectable root display on rows/cols headers
+-hier menus are filterred by user authorization
+-handle pipelinedSQL collisions
+-2 types of query: Union and Conjunctive
+
+ver 0.42
+-database load balancing and failover
+
+ver 0.43
+-fixed re-opening unnecessary connections to database
+-move page templates to /tmpl
+-basic mdx parser
+-mdx output
+
+ver 0.44
+-mdx input into GUI
+
+ver 0.45
+-display in page the parsing error
+-mdx parser bugfixes
+
+ver 0.46
+-fixed formulas for 1st row / 1st col for non selectable root 
+-updated instructions
+
+ver 0.47
+-renamed database columns "start", "end" to support PostgreSQL (and others..?)
+
+ver 0.48
+-hierarchy menus are opened with click (mouse over was annoying)
+-default database is sqlite (does not support partitions, so indexes are used) . Small database included (only December 2006 data)
+-edit in constants.py DBLIB = 'sqlite' # 'mysql', 'sqlite'
+-check in sqlutil.py default database, connection libraries
+-libraries included (hopefully it is one-click-install)
+
+ver 0.49
+-add Postgres support
+-ignore missing password file for sqlite
+
+ver 0.50
+-gen.py uses BEGIN+COMMIT = faster
+-portable SQL
+-dimension nesting + MDX crossJoin
+-crossjoin not supported in web designer
+
+ver 0.51
+-bugfix: needed to press "execute MDX" twice
+-bugfix: time measurement
+-experimental support for MonetDB; only works on Windows
+-bugfix: removed &nbsp; table is now clean XML
+
+ver 0.52
+-performance improvement: split fact table by non-agregatable dims
+-gen.py: generate split fact tables, MonetDB compatible SQL
+-bugfix: unionAllSQL had empty rowL when workload divisible with MAX_PIPELINED_UNION
+-bugfix: unionAllSQL failed when selecting "all" from non-selectable-root dimension
+
+ver 0.53
+-bugfix: rounding broken for MonetDB
+-bugfix: keeping drillpath when dicing
+-bugfix: gen.py generates all tables
+
+ver 0.54
+-bugfix: etl.py not aware of metadata.is_table (split fact table)
+
+ver 0.55
+-added SVG charts (converted to XHTML 1.0 Transitional)
+
+ver 0.56
+-iframe with chart has static height to fix rendering problems in Firefox 
+-fixed minor Javascript errors, now works fine in Firefox, Camino, Safari
+
+ver 0.57
+-fix Adobe SVG plugin for Iexplorer
+-fix SVG rendering error for empty charts
+-fix content-type header = "application/xhtml+xml"
+
+ver 0.58 (2011
+-removed the SVG chart
+-accept MDX with and without .children
+
+Bugs:
+-ConjunctiveSQL not used anymore ??
+-in unionAllSQL return NONE (or what func?)
+-use 'between' and conjunctive SQL
+-gen.py not ok for postgres and mondrian
+-ETL not updated !!
+-test.py unmaintained
+-crossjoin does not work with non-selectable-root dimensions
+-runWorkers needs to split on rows / cols to sql_treadpool ?
+-Opera 9.1: Javascript problem hiding Hierarchy Menus
+
+To Do:
+-testing
+-add SUM, AVG, MIN, MAX, COUNT
+-add spinning wheel
+-cleanup authorizations ..
+-calculated measures (in database / in MDX ?)
+-allow multi-select hier-menu selections
+-allow "nodes" and "descendants_of" for row/column
+-separate web presentation from aggregation
+-etl from real star-queries, with N relational levels
+-gen start-metadata and star-queries
+-output valid XML (XHTML+XLST?)
+-Model.runPipelinedQueriesFromDict is O(N), rewrite

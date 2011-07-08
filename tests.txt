@@ -1,0 +1,15 @@
+Select {[time].[all time].[time_2005],[time].[all time].[time_2005].[time_2005_2]} on rows, {[region].[all region].children} on columns from cubulus 
+
+
+Select 
+ {[time].[all time].[time_2006],[time].[all time].[time_2005].[time_2005_2]} on rows, 
+ {[region].[all region].[region_1],[region].[all region].[region_2].[region_2_1] } on columns from cubulus 
+where 
+ ( [customer].[all customer].[customer_0] , [prod].[all prod].[prod_0])
+
+
+Select {[time].[all time].children} on rows, {[region].[all region].[region_2].[region_2_1] } on columns from cubulus 
+
+
+
+

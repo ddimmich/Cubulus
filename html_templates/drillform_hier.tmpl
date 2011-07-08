@@ -1,0 +1,17 @@
+<html>
+<link rel="StyleSheet" href="%s/static/dtree.css" type="text/css" />
+<script type="text/javascript" src="%s/static/dtree.js"></script>
+<script type="text/javascript">
+function iframedrill(ve, di, it) {
+	frm = parent.data.document.getElementById('cubulus')
+	frm.verb.value = ve;
+	frm.dim.value = di;
+	frm.item.value = it;
+	frm.submit();
+};
+</script>
+<body STYLE="background-color:#eee"><script type="text/javascript">
+a = new dTree('a');
+a.config.useCookies=false;
+a.config.useIcons=false;
+a.config.useSelection=true;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:svg="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<head>
+<link href="%(modProxyRoot)s/static/cubulus.css" type="text/css" />
+<title>Cubulus</title>
+<!-- script --> %(js)s
+</head>
+
+<body>
+
+<p><!-- errors --> <b>%(err)s</b></p>
+<!-- table and SVG chart--> %(table)s
+<p>Note ! Cubulus understands only a small subset of MDX. Always use 
+Ex: [time].[all time].<b>children</b>. Calculated measures <b>don't</b> work for now. 
+Try limit yourself to MDX statements similar to :<br /><br />
+
+<i>Select {[time].[all time].children} on rows, 
+crossjoin([region].[all region].children, [prod].[all prod].children) on columns
+from cubulus<br /><br />
+
+Select {[time].[all time].children} on columns, 
+crossjoin([region].[all region].children, [prod].[all prod].children) on rows 
+from cubulus<br /><br />
+
+Select crossjoin([time].[all time].children, [customer].[all customer].children) on columns, 
+crossjoin([region].[all region].children, [prod].[all prod].children) on rows 
+from cubulus<br /><br /></i> </p>
+			
+<form id="cubulus" action="default" method="%(method)s">
+<p><!--on rows:--> <input type="%(hidden)s" name="onrows" value="%(onrows)d" /></p>
+<p><!--on cols:--> <input type="%(hidden)s" name="oncols" value="%(oncols)d" /></p>
+<p><!--hiers:--> <input type="%(hidden)s" name="hiers" value="%(hiers)s" /></p>
+<p><!--filters:--> <input type="%(hidden)s" name="filters" value="%(filters)s" /></p>
+<p><!--verb:--> <input type="%(hidden)s" name="verb" value="%(verb)s" /></p>
+<p><!--dim:--> <input type="%(hidden)s" name="dim" value="%(dim)d" /></p>
+<p><!--item:--> <input type="%(hidden)s" name="item" value="%(item)d" /></p>
+<p><!--item:--> <textarea name="mdx" cols="40" rows="6" >%(mdx_out)s</textarea>
+	<!--button:--> <button onclick="drill('4','0','0')">Execute MDX</button> </p>
+<p><input type="hidden" /></p></form>
+		
+<!--rows: (r)s<br />
+cols: (c)s<br /> -->
+</body>
+</html>

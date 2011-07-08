@@ -1,0 +1,27 @@
+p.username {
+	color: blue;
+	text-align: right;
+}
+
+table { empty-cells:show; }
+
+#zebratable tbody tr td {
+	background-color: #fff;
+	text-align: right;
+}
+#zebratable tbody tr.odd  td {
+	background-color: #bbddff;
+	text-align: right;
+}
+#zebratable tbody td.nwcorner {
+	background-color: #888;
+}
+
+#zebratable tbody td.top {
+	background-color: #66cc00;
+	text-align: right;
+}
+#zebratable tbody td.bottom {
+	background-color: #cc0000;
+	text-align: right;
+}

@@ -1,0 +1,15 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="/static/cubulus.css" />
+<!-- script --> <script type="text/javascript">
+        function drill(ve, di, it) {
+                document.cubulus.verb.value = ve;
+                document.cubulus.dim.value = di;
+                document.cubulus.item.value = it;
+                document.cubulus.submit();};</script>
+</head>
+<form name="mdx" action="index" method="%(method)s">
+	<input type="text" name="mdxQuery" value="%(mdx)s"></p>
+	<p><input type="submit"></p>
+</form><br /><br />
+%(table)s
+</html>
